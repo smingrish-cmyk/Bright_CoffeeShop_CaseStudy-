@@ -34,7 +34,8 @@ SELECT
     transaction_id,
     transaction_date,
     DAYNAME(transaction_date) AS Day_name,
-    MONTHNAME(transaction_date) AS Month_name
+    MONTHNAME(transaction_date) AS Month_name,
+    DAYOFMONTH(transaction_date) AS Day_of_month
 FROM `workspace`.`default`.`case_study_1`;
 
 -- 7. Calculating total revenue
@@ -52,7 +53,9 @@ FROM `workspace`.`default`.`case_study_1`
 GROUP BY 
     transaction_date,
     DAYNAME(transaction_date),
-    MONTHNAME(transaction_date)
+    MONTHNAME(transaction_date),
+    DAYOFMONTH(transaction_date)
+    
 ORDER BY 
     transaction_date ASC;
 
@@ -65,6 +68,11 @@ SELECT
     store_id,
     store_location,
     product_id,
+    DAYNAME(transaction_date) AS Day_name,
+    MONTHNAME(transaction_date) AS Month_name,
+    DAYOFMONTH(transaction_date) AS Day_of_month,
+   
+
 
  -- 10. Casting unit_price
  CAST(REPLACE(unit_price, ',', '.') AS DECIMAL(10,2)) AS unit_price, 
